@@ -2,72 +2,54 @@
 
 import requests
 from bs4 import BeautifulSoup
-# csv
+import csv
+
+# ---------------------
 
 url = "https://www.actiac.org/upcoming-events"
-response = requests.get(url)
+page = requests.get(url)
 
-soup = BeautifulSoup(response.content, features='html.parser')
-
+soup = BeautifulSoup(page.content, "html.parser")
 # find all events on the page by event card with div and class
-cards = soup.findAll('div', class_='cards-item non-sticky views-row')
+cards = soup.find_all('div', class_='cards-item non-sticky views-row')
 # print(cards)
 
-# TODO: use class closest to text element to make sure it pulls correct text (e.g., div class="cards-description" then "p")
-
 # count all events with cards on the page to manually check on webpage
-# print(len(css_class_card))
+# print(len(cards))
 
-# parse content bits for csv export
+# ---------------------
 
 # type of event - COI, Conference, FIE, Small Biz Alliance, Pro Dev
 # <img alt="" src="/sites/default/files/community_of_interest.png">
 
-# event_type = css_class_card[0].find('img')
-# print(event_type)
-# TODO: get event_type from URL, format as needed for excel file
-# TODO: loop for all cards
+for card in cards:
+    event_type = card.find('img')
+    # event_format = getattr(card.find('strong'), 'text', None)
+    # print(event_type)
+    # print(event_format)
+
+# TODO: figure out how to iterate to only get image name and produce as text for excel
+
+# ---------------------
 
 # event format - virtual, in-person, in-person and virtual, unknown, multi-day event
 # <strong>Virtual Event</strong>
 
-# event_format = [events[0].find('strong').text for card in cards]
-# event_text_only = event_format.text
-# print(event_text_only)
-# TODO: loop for all cards
+# for card in cards:
+    # event_format = getattr(card.find('strong'), 'text', None)
+    # print(event_format)
 
-# event title - like "ACT-IAC Health COI February 2023"
-# <h4>ACT-IAC Health COI February 2023</h4>
+event_format = [getattr(event.find('strong'), 'text', None) for event in cards]
+# print(event_format)
 
-# event_title = css_class_card[0].find('h4')
-# event_title_only = event_title.text
-# print(event_title_only)
-# TODO: loop for all cards
+# excel code
 
-# event date - like "Tuesday, February 21, 2023"
-# <time datetime="00Z" class="datetime">Tuesday, February 21, 2023</time>
+header = ['Event_Type', 'Event_Format', 'Event_Title', 'Event_Date', 'Description', 'Learn More']
 
-# event_date = css_class_card[0].find('time')
-# event_date_only = event_date.text
-# print(event_date_only)
-# TODO: loop for all cards
+with open('test1.csv', 'w') as test:
+    events = csv.writer(test, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
 
-# event description
-# <p>Join the ACT-IAC Health COI meeting to hear from...</p>
+    events.writerow(header)
+    events.writerow(event_format)
 
-# event_description = css_class_card[0].find('p')
-# event_description_only = event_description.text
-# print(event_description_only)
-# TODO: loop for all cards
-
-# Learn More button - link to event page
-# <a href="/act-iac-event/act-iac-health-coi-february-2023">Learn More</a>
-
-# event_more = css_class_card[0].find('a')
-# print(event_more)
-# event_more_only = event_more.text
-# print(event_more_only)
-# TODO: determine how to strip URLs from an href
-# TODO: loop for all cards
-
-# TODO: write to csv, format text as needed
+test.close()
