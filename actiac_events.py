@@ -77,16 +77,21 @@ event_description = [getattr(event.find('p'), 'text', None) for event in cards]
 # Learn More button - link to event page
 # <a href="/act-iac-event/act-iac-health-coi-february-2023">Learn More</a>
 
-# event_more = [event_more_value.find('a') for event_more_value in cards]
+event_more = [event_type_value.find_all('a') for event_type_value in cards]
 # print(event_more)
 
-# TODO: parse out URL, maybe alias to spreadsheet value (e.g., Link)
+flat_list = [item for sublist in event_more for item in sublist]
+# print(flat_list)
+
+event_more = []
+for link in flat_list:
+    event_more.append(f"https://www.actiac.org{link.get('href')}")
 
 # ---------------------
 
 # xlsxwriter output
 
-workbook = xlsxwriter.Workbook('ACT-IAC_Events.xlsx')
+workbook = xlsxwriter.Workbook('ACT-IAC_Events-02.23.23.xlsx')
 worksheet = workbook.add_worksheet()
 
 header = ['Event_Type', 'Event_Format', 'Event_Title', 'Event_Date', 'Description', 'Learn More']
@@ -97,6 +102,6 @@ worksheet.write_column('B2', event_format)
 worksheet.write_column('C2', event_title)
 worksheet.write_column('D2', event_date)
 worksheet.write_column('E2', event_description)
-# TODO: add event_more in 'F2'
+worksheet.write_column('F2', event_more)
 
 workbook.close()
