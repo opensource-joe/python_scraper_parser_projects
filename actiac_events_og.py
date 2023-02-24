@@ -1,8 +1,7 @@
-# scraper and parser for ACT-IAC events
+# original scraper and parser for ACT-IAC events (can be deleted once new scraper and parser is running)
 
 import requests
 from bs4 import BeautifulSoup
-# csv
 
 # ---------------------
 
@@ -41,8 +40,6 @@ print(cards)
 # else:
 #     print("Type of Event TBD")
 
-# TODO: integrate conditional logic with loop
-
 # ---------------------
 
 # event format - virtual, in-person, in-person and virtual, unknown, multi-day event
@@ -50,8 +47,6 @@ print(cards)
 
 # event_format = [event_format_value.find('strong') for event_format_value in cards]
 # print(event_format)    
-
-# TODO: parse out <strong>
 
 # ---------------------
 
@@ -61,8 +56,6 @@ print(cards)
 # event_title = [event_title_value.find('h4') for event_title_value in cards]
 # print(event_title)
 
-# TODO: parse out <h4>
-
 # ---------------------
 
 # event date - like "Tuesday, February 21, 2023"
@@ -70,8 +63,6 @@ print(cards)
 
 # event_date = [event_date_value.find('time') for event_date_value in cards]
 # print(event_date)
-
-# TODO: parse out date text (e.g., Monday, March 27, 2023)
 
 # ---------------------
 
@@ -81,8 +72,6 @@ print(cards)
 # event_description = [event_description_value.find('p') for event_description_value in cards]
 # print(event_description)
 
-# TODO: parse out description text
-
 # ---------------------
 
 # Learn More button - link to event page
@@ -90,9 +79,3 @@ print(cards)
 
 # event_more = [event_more_value.find('a') for event_more_value in cards]
 # print(event_more)
-
-# TODO: parse out URL, maybe alias to spreadsheet value (e.g., Link)
-
-# ---------------------
-
-# TODO: write to csv, format text as needed
