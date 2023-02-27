@@ -10,9 +10,7 @@ url = "https://www.actiac.org/upcoming-events"
 page = requests.get(url)
 
 soup = BeautifulSoup(page.content, "html.parser")
-# find all events on the page by event card with div and class
 cards = soup.find_all('div', class_='cards-item non-sticky views-row')
-# print(cards)
 
 # count all events with cards on the page to manually check on webpage
 # print(len(cards))
@@ -77,17 +75,19 @@ event_description = [getattr(event.find('p'), 'text', None) for event in cards]
 # Learn More button - link to event page
 # <a href="/act-iac-event/act-iac-health-coi-february-2023">Learn More</a>
 
-event_more = [event_type_value.find_all('a') for event_type_value in cards]
-# print(event_more)
-
-flat_list = [item for sublist in event_more for item in sublist]
-# print(flat_list)
-
 event_more = []
-for link in flat_list:
-    event_more.append(f"https://www.actiac.org{link.get('href')}")
+for card in cards:
+    if card.find('a') == None:
+        event_more.append('TBD')
+    else: 
+        event_more.append(card.find('a'))
 
-# TODO: if statement for missing link
+event_more_2 = []
+for link in event_more:
+    if link == "TBD":
+        event_more_2.append("TBD")
+    else:
+        event_more_2.append(f"https://www.actiac.org" + link.get('href'))
 
 # ---------------------
 
@@ -95,7 +95,7 @@ for link in flat_list:
 
 workbook = xlsxwriter.Workbook('ACT-IAC_Events-02.27.23.xlsx')
 worksheet1 = workbook.add_worksheet('Events_Calendar')
-worksheet2 = workbook.add_worksheet('Projects')
+# worksheet2 = workbook.add_worksheet('Projects')
 
 header = ['Event_Type', 'Event_Format', 'Event_Title', 'Event_Date', 'Description', 'Learn More']
 
@@ -105,8 +105,10 @@ worksheet1.write_column('B2', event_format)
 worksheet1.write_column('C2', event_title)
 worksheet1.write_column('D2', event_date)
 worksheet1.write_column('E2', event_description)
-worksheet1.write_column('F2', event_more)
+worksheet1.write_column('F2', event_more_2)
 
-worksheet2.write_column('A1', 'test')
+# worksheet2.write_column('A1', 'test')
 
 workbook.close()
+
+# TODO: consolidate writer elements into one file for output
