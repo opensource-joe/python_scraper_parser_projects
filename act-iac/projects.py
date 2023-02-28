@@ -1,8 +1,7 @@
-# scraper and parser for ACT-IAC projects & activities
+# scraper and parser for ACT-IAC Projects
 
 import requests
 from bs4 import BeautifulSoup
-import xlsxwriter
 
 # ---------------------
 

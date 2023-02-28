@@ -2,7 +2,6 @@
 
 import requests
 from bs4 import BeautifulSoup
-import xlsxwriter
 
 # ---------------------
 
@@ -39,22 +38,4 @@ flat_coi_list = [item for sublist in coi_link for item in sublist]
 
 coi_link_2 = []
 for link in flat_coi_list:
-    coi_link_2.append(f"https://www.actiac.org{link.get('href')} (members only)")
-
-# ---------------------
-
-# xlsxwriter output
-
-workbook = xlsxwriter.Workbook('excel_docs/ACT-IAC_COIs-02.27.23.xlsx')
-worksheet2 = workbook.add_worksheet('COIs')
-
-header = ['COI_Title', 'Description', 'COI_Page']
-
-worksheet2.write_row('A1', header)
-worksheet2.write_column('A2', coi_title)
-worksheet2.write_column('B2', coi_description)
-worksheet2.write_column('C2', coi_link_2)
-
-workbook.close()
-
-# move to one py file for clean output
+    coi_link_2.append(f"https://www.actiac.org{link.get('href')}")

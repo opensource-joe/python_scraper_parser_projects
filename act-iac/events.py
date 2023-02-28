@@ -1,8 +1,7 @@
-# scraper and parser for ACT-IAC events
+# scraper and parser for ACT-IAC Events
 
 import requests
 from bs4 import BeautifulSoup
-import xlsxwriter
 
 # ---------------------
 
@@ -88,27 +87,3 @@ for link in event_more:
         event_more_2.append("TBD")
     else:
         event_more_2.append(f"https://www.actiac.org" + link.get('href'))
-
-# ---------------------
-
-# xlsxwriter output
-
-workbook = xlsxwriter.Workbook('ACT-IAC_Events-02.27.23.xlsx')
-worksheet1 = workbook.add_worksheet('Events_Calendar')
-# worksheet2 = workbook.add_worksheet('Projects')
-
-header = ['Event_Type', 'Event_Format', 'Event_Title', 'Event_Date', 'Description', 'Learn More']
-
-worksheet1.write_row('A1', header)
-worksheet1.write_column('A2', event_type)
-worksheet1.write_column('B2', event_format)
-worksheet1.write_column('C2', event_title)
-worksheet1.write_column('D2', event_date)
-worksheet1.write_column('E2', event_description)
-worksheet1.write_column('F2', event_more_2)
-
-# worksheet2.write_column('A1', 'test')
-
-workbook.close()
-
-# TODO: consolidate writer elements into one file for output
