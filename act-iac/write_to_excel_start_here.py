@@ -1,6 +1,7 @@
 import xlsxwriter
 import events
 import cois
+# import projects
 
 # ---------------------
 
