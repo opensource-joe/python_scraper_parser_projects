@@ -45,8 +45,11 @@ for link in card_link_prep:
 # In Progress
 
 # bumping up variable to 10th to capture all In Progress cards
-cards_lev10 = cards.find_all('div', {'class', 'views-row'})[4]
+cards_lev10 = cards.find_all('div', {'class', 'views-row'})[5]
 cards_lev11 = cards_lev10.find_all('div', {'class', 'views-row'})
+
+# will have to change periodically based on number of projects in each section
+# print(cards_lev10)
 
 # header
 
