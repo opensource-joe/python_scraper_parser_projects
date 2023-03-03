@@ -11,9 +11,6 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, "html.parser")
 cards = soup.find_all('div', class_='events-page')[0]
 
-# count all events with cards on the page to manually check on webpage
-# print(len(cards))
-
 # ---------------------
 
 # featured event
@@ -82,8 +79,6 @@ upcoming_date_final = []
 for item in upcoming_date:
     upcoming_date_final.append(item.text)
     
-# TODO: add to write_to_excel file
-
 # ---
 
 # event card location
@@ -95,10 +90,14 @@ upcoming_location_final = []
 for item in upcoming_location:
     upcoming_location_final.append(item.text)
 
-# TODO: add to write_to_excel file
-
 # ---
 
 # learn more - register (located w/ title)
 # <p class="event-card__location">Ritz-Carlton, Pentagon City</p>
 
+upcoming_url = cards_upcoming.find_all('a')
+# print(upcoming_url)
+
+upcoming_url_final = []
+for link in upcoming_url:
+    upcoming_url_final.append(link.get('href'))
