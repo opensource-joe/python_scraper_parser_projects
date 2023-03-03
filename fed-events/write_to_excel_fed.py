@@ -48,7 +48,7 @@ worksheet2.write_column('D2', events_govexec.featured_url_final)
 worksheet2.write_column('A3', events_govexec.upcoming_title_final)
 worksheet2.write_column('B3', events_govexec.upcoming_date_final)
 worksheet2.write_column('C3', events_govexec.upcoming_location_final)
-# worksheet2.write_column('D3', events_govexec.upcoming_url_final)
+worksheet2.write_column('D3', events_govexec.upcoming_url_final)
 
 # ---------------------
 
