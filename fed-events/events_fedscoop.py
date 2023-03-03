@@ -76,12 +76,29 @@ for item in upcoming_title:
 # event card date
 # <p class="event-card__date">Mar 15, 2023</p>
 
+upcoming_date = cards_upcoming.find_all('p', {'event-card__date'})
+
+upcoming_date_final = []
+for item in upcoming_date:
+    upcoming_date_final.append(item.text)
+    
+# TODO: add to write_to_excel file
+
 # ---
 
 # event card location
 # <p class="event-card__location">Ritz-Carlton, Pentagon City</p>
 
+upcoming_location = cards_upcoming.find_all('p', {'event-card__location'})
+
+upcoming_location_final = []
+for item in upcoming_location:
+    upcoming_location_final.append(item.text)
+
+# TODO: add to write_to_excel file
+
 # ---
 
 # learn more - register (located w/ title)
 # <p class="event-card__location">Ritz-Carlton, Pentagon City</p>
+
