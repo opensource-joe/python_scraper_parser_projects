@@ -3,6 +3,7 @@ import events_fedscoop
 import events_govexec
 import events_nextgov
 import events_meritalk
+import events_proservcouncil
 
 # ---------------------
 
@@ -79,6 +80,20 @@ worksheet4.write_column('A2', events_meritalk.upcoming_title_final)
 worksheet4.write_column('B2', events_meritalk.upcoming_date_final)
 worksheet4.write_column('C2', events_meritalk.upcoming_description_final)
 worksheet4.write_column('D2', events_meritalk.upcoming_url_final)
+
+# ---------------------
+
+# report content Professional Services Council events
+
+worksheet5 = workbook.add_worksheet('ProServCouncil')
+
+header5 = ['Event Name', 'Event Date', 'Location', 'Learn More']
+
+worksheet5.write_row('A1', header5, bold)
+worksheet5.write_column('A2', events_proservcouncil.upcoming_title_final)
+worksheet5.write_column('B2', events_proservcouncil.upcoming_date_final)
+worksheet5.write_column('C2', events_proservcouncil.upcoming_location_final)
+worksheet5.write_column('D2', events_proservcouncil.upcoming_url_final)
 
 # ---------------------
 
