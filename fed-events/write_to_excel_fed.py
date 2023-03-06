@@ -6,7 +6,7 @@ import events_meritalk
 
 # ---------------------
 
-workbook = xlsxwriter.Workbook('fed-events/Fed_Events-03.03.23.xlsx')
+workbook = xlsxwriter.Workbook('fed-events/Fed_Events-03.06.23.xlsx')
 
 # ---------------------
 
@@ -77,7 +77,7 @@ header4 = ['Event Name', 'Event Date', 'Description', 'Learn More']
 worksheet4.write_row('A1', header4, bold)
 worksheet4.write_column('A2', events_meritalk.upcoming_title_final)
 worksheet4.write_column('B2', events_meritalk.upcoming_date_final)
-worksheet4.write_column('C2', events_meritalk.upcoming_location_final)
+worksheet4.write_column('C2', events_meritalk.upcoming_description_final)
 worksheet4.write_column('D2', events_meritalk.upcoming_url_final)
 
 # ---------------------
