@@ -4,10 +4,12 @@ import events_govexec
 import events_nextgov
 import events_meritalk
 import events_proservcouncil
+import events_afcea_beth
+import events_afcea_nova
 
 # ---------------------
 
-workbook = xlsxwriter.Workbook('fed-events/Fed_Events-03.06.23.xlsx')
+workbook = xlsxwriter.Workbook('fed-events/Fed_Events-03.07.23.xlsx')
 
 # ---------------------
 
@@ -94,6 +96,29 @@ worksheet5.write_column('A2', events_proservcouncil.upcoming_title_final)
 worksheet5.write_column('B2', events_proservcouncil.upcoming_date_final)
 worksheet5.write_column('C2', events_proservcouncil.upcoming_location_final)
 worksheet5.write_column('D2', events_proservcouncil.upcoming_url_final)
+
+# ---------------------
+
+# report content Professional Services Council events
+
+worksheet6 = workbook.add_worksheet('AFCEA')
+
+header6 = ['Event Name', 'Event Date', 'Learn More']
+
+worksheet6.write('A1', 'AFCEA Bethesda', bold)
+worksheet6.write('A8', 'AFCEA Northern VA', bold)
+
+# Bethesda
+worksheet6.write_row('A3', header6, bold)
+worksheet6.write_column('A4', events_afcea_beth.upcoming_title_final)
+worksheet6.write_column('B4', events_afcea_beth.upcoming_date_final)
+worksheet6.write_column('C4', events_afcea_beth.upcoming_url_final)
+
+# NoVA
+worksheet6.write_row('A10', header6, bold)
+worksheet6.write_column('A11', events_afcea_nova.upcoming_title_final)
+worksheet6.write_column('B11', '')
+worksheet6.write_column('C11', events_afcea_nova.upcoming_url_final)
 
 # ---------------------
 
