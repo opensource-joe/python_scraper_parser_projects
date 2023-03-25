@@ -1,4 +1,4 @@
-# scraper and parser for AFCEA Bethesda Events
+# scraper and parser for AFCEA DC Events
 
 import requests
 from bs4 import BeautifulSoup

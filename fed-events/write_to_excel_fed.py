@@ -3,13 +3,13 @@ import events_fedscoop
 import events_govexec
 import events_nextgov
 import events_meritalk
-import events_proservcouncil
+# import events_proservcouncil
 import events_afcea_beth
 import events_afcea_nova
 
 # ---------------------
 
-workbook = xlsxwriter.Workbook('fed-events/Fed_Events-03.07.23.xlsx')
+workbook = xlsxwriter.Workbook('fed-events/Fed_Events-03.25.23.xlsx')
 
 # ---------------------
 
@@ -87,15 +87,15 @@ worksheet4.write_column('D2', events_meritalk.upcoming_url_final)
 
 # report content Professional Services Council events
 
-worksheet5 = workbook.add_worksheet('ProServCouncil')
+# worksheet5 = workbook.add_worksheet('ProServCouncil')
 
-header5 = ['Event Name', 'Event Date', 'Location', 'Learn More']
+# header5 = ['Event Name', 'Event Date', 'Location', 'Learn More']
 
-worksheet5.write_row('A1', header5, bold)
-worksheet5.write_column('A2', events_proservcouncil.upcoming_title_final)
-worksheet5.write_column('B2', events_proservcouncil.upcoming_date_final)
-worksheet5.write_column('C2', events_proservcouncil.upcoming_location_final)
-worksheet5.write_column('D2', events_proservcouncil.upcoming_url_final)
+# worksheet5.write_row('A1', header5, bold)
+# worksheet5.write_column('A2', events_proservcouncil.upcoming_title_final)
+# worksheet5.write_column('B2', events_proservcouncil.upcoming_date_final)
+# worksheet5.write_column('C2', events_proservcouncil.upcoming_location_final)
+# worksheet5.write_column('D2', events_proservcouncil.upcoming_url_final)
 
 # ---------------------
 
@@ -117,7 +117,7 @@ worksheet6.write_column('C4', events_afcea_beth.upcoming_url_final)
 # NoVA
 worksheet6.write_row('A10', header6, bold)
 worksheet6.write_column('A11', events_afcea_nova.upcoming_title_final)
-worksheet6.write_column('B11', '')
+worksheet6.write_column('B11', events_afcea_nova.dates)
 worksheet6.write_column('C11', events_afcea_nova.upcoming_url_final)
 
 # ---------------------

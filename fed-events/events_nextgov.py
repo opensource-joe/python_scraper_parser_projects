@@ -1,4 +1,4 @@
-# scraper and parser for ACT-IAC Events
+# scraper and parser for NextGov Events
 
 import requests
 from bs4 import BeautifulSoup

@@ -1,5 +1,7 @@
-# scraper and parser for ACT-IAC Events
+# scraper and parser for AFCEA Nova Events
+# need to use updated HTML page b/c webpage is dynamic
 
+import re
 from bs4 import BeautifulSoup
 
 # ---------------------
@@ -24,10 +26,10 @@ for item in upcoming_title:
 
 # ---
 
-# event date
+# event date - using regex w/ import re
 
-# TODO: find a way to split string of text to parse out date
-
+pattern = "\d{2}[/-]\d{2}[/-]\d{4}"
+dates = re.findall(pattern, contents)
 
 # ---
 
