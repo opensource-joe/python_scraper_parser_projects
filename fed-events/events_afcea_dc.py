@@ -1,45 +1,47 @@
 # scraper and parser for AFCEA DC Events
+# need to use updated HTML page b/c webpage is dynamic
+# manual update to number of list items for title, date, and upcoming_url
 
-import requests
 from bs4 import BeautifulSoup
 
 # ---------------------
 
-url = "https://bethesda.afceachapters.org/events/"
-page = requests.get(url)
+open_file = open('fed-events/AFCEA-DC.html', 'r')
+contents = open_file.read()
 
-soup = BeautifulSoup(page.content, "html.parser")
-cards = soup.find('div', {'class', 'tribe-events-calendar-list'})
+soup = BeautifulSoup(contents, 'html.parser')
+cards = soup.find('div', {'class', 'field-item even'})
+
+# print(cards)
 
 # ---------------------
 
 # event title
 
-upcoming_title = cards.find_all('a')
+upcoming_title = cards.find_all('span')
 
 upcoming_title_final = []
-for item in upcoming_title[1::3]:
+for item in upcoming_title[0:3]:
     upcoming_title_final.append(item.text.strip())
 
 # ---
 
 # event date
 
-upcoming_date = cards.find_all('span', {'class', 'tribe-event-date-start'})
+upcoming_date = cards.find_all('h4')
 
 upcoming_date_final = []
-for item in upcoming_date:
-    upcoming_date_final.append(item.text)
+for item in upcoming_date[0:5:2]:
+    upcoming_date_final.append(item.text.strip())
 
 # ---
 
 # event learn more
 
-upcoming_url = cards.find_all('div', {'class', 'iron-tribe-event-link'})
+upcoming_url = cards.find_all('a')
 
-upcoming_url_inter = [link.find_all('a') for link in upcoming_url]
-flat_upcoming_url = [item for sublist in upcoming_url_inter for item in sublist]
+upcoming_url_inter = []
+for link in upcoming_url:
+    upcoming_url_inter.append(link.get('href'))
 
-upcoming_url_final = []
-for link in flat_upcoming_url:
-    upcoming_url_final.append(link.get('href'))
+upcoming_url_final = upcoming_url_inter[1:3]

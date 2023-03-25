@@ -6,6 +6,7 @@ import events_meritalk
 # import events_proservcouncil
 import events_afcea_beth
 import events_afcea_nova
+import events_afcea_dc
 
 # ---------------------
 
@@ -99,7 +100,7 @@ worksheet4.write_column('D2', events_meritalk.upcoming_url_final)
 
 # ---------------------
 
-# report content Professional Services Council events
+# report content AFCEA events
 
 worksheet6 = workbook.add_worksheet('AFCEA')
 
@@ -107,6 +108,7 @@ header6 = ['Event Name', 'Event Date', 'Learn More']
 
 worksheet6.write('A1', 'AFCEA Bethesda', bold)
 worksheet6.write('A8', 'AFCEA Northern VA', bold)
+worksheet6.write('A22', 'AFCEA DC', bold)
 
 # Bethesda
 worksheet6.write_row('A3', header6, bold)
@@ -119,6 +121,12 @@ worksheet6.write_row('A10', header6, bold)
 worksheet6.write_column('A11', events_afcea_nova.upcoming_title_final)
 worksheet6.write_column('B11', events_afcea_nova.dates)
 worksheet6.write_column('C11', events_afcea_nova.upcoming_url_final)
+
+# DC
+worksheet6.write_row('A24', header6, bold)
+worksheet6.write_column('A25', events_afcea_dc.upcoming_title_final)
+worksheet6.write_column('B25', events_afcea_dc.upcoming_date_final)
+worksheet6.write_column('C25', events_afcea_dc.upcoming_url_final)
 
 # ---------------------
 

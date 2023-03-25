@@ -1,4 +1,5 @@
 # scraper and parser for AFCEA Bethesda Events
+# manual update to number of list items for title
 
 import requests
 from bs4 import BeautifulSoup
