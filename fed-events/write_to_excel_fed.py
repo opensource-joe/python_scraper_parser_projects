@@ -7,6 +7,7 @@ import events_meritalk
 import events_afcea_beth
 import events_afcea_nova
 import events_afcea_dc
+import events_affirm
 
 # ---------------------
 
@@ -127,6 +128,20 @@ worksheet6.write_row('A24', header6, bold)
 worksheet6.write_column('A25', events_afcea_dc.upcoming_title_final)
 worksheet6.write_column('B25', events_afcea_dc.upcoming_date_final)
 worksheet6.write_column('C25', events_afcea_dc.upcoming_url_final)
+
+# ---------------------
+
+# report content AFFIRM events
+
+worksheet7 = workbook.add_worksheet('AFFIRM')
+
+header7 = ['Event Name', 'Event Date', 'Description', 'Learn More']
+
+worksheet7.write_row('A1', header7, bold)
+worksheet7.write_column('A2', events_affirm.upcoming_title_final)
+worksheet7.write_column('B2', events_affirm.upcoming_date_final)
+worksheet7.write_column('C2', events_affirm.upcoming_description_final)
+worksheet7.write_column('D2', events_affirm.upcoming_url_final)
 
 # ---------------------
 
