@@ -8,6 +8,7 @@ import events_afcea_beth
 import events_afcea_nova
 import events_afcea_dc
 import events_affirm
+import events_atarc
 
 # ---------------------
 
@@ -142,6 +143,21 @@ worksheet7.write_column('A2', events_affirm.upcoming_title_final)
 worksheet7.write_column('B2', events_affirm.upcoming_date_final)
 worksheet7.write_column('C2', events_affirm.upcoming_description_final)
 worksheet7.write_column('D2', events_affirm.upcoming_url_final)
+
+# ---------------------
+
+# report content AFFIRM events
+
+worksheet8 = workbook.add_worksheet('ATARC')
+
+header8 = ['Event Name', 'Event Date', 'Description', 'Learn More']
+
+worksheet8.write_row('A1', header7, bold)
+worksheet8.write_column('A2', events_atarc.upcoming_title_final)
+worksheet8.write_column('B2', events_atarc.upcoming_date_final)
+worksheet8.write_column('C2', events_atarc.upcoming_location_final)
+worksheet8.write_column('D2', events_atarc.upcoming_description_final)
+worksheet8.write_column('E2', events_atarc.upcoming_url_final)
 
 # ---------------------
 
